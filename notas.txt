@@ -1,0 +1,31 @@
+Posiciones unset:
+  -Tenemos left o right, según sea el caso, con valor unset.
+  -Esto es para que, cuando tengamos left en 0, y right en unset, se tire 
+    completamente a la izquierda, y con left unset y right 0, se tire a la derecha,
+  -Hay varias formas de hacer esto, pero esta es la más sencilla.
+
+Lógica de estilos:
+  -El switch será un boton.
+  -El circulo del switch lo haremos con el pseudoelemento after del boton.
+  -Al switch le definimos tambien una clase, que tendrá estilos aplicados cuando cambiará de modo.
+    .Lo normal es que esté primero se apliquen los estilos del modo claro, luego del oscuro al aplicar esta clase.
+    .Por esto, la clase no debe ser aplicada en un inicio.
+    .Los estilos del switch cuando cambie serán si muestra un sol o luna dependiendo de el modo escogido.
+
+Logica del JS:
+  -Inicialmente, validamos sí en el localStorage tenemos o no el item 'dark-mode' en 'true'.
+    .localStorage solo acepta strings.
+  -Sí es verdadero, le añadimos al body la clase 'dark', y al switch la clase que definimos para el modo oscuro.
+    .Para definir una clase al body: document.body.classList.add('nombreClase');
+  -En caso de que el item del localStorage no esté en true, removemos las clases de los anteriores elementos mencionados.
+  -Al dar click en el boton, vamos a hacer toggle de esas clases en los elementos respectivos (dark y switch).
+  -Tambien, validamos sí el body tiene la clase 'dark', sí es así, colocamos el item del localStorage, sino, lo 
+    colocamos en falso.
+
+Lógica del dark mode:
+  -Para colocar los estilos al rededor de la página, vamos a usar la clase dark del body, no la del switch, ya que la
+    del switch es solo para aplicar los estilos a este.
+  -Para esto, primero vamos al body, y aplicamos el estilo así (este ejemplo es de SASS): &.dark{estilos}:
+    .Esto aplicará los estilos cuando el body tenga la clase dark.
+  -Esto sería similar con elementos que no sean el body, por ejemplo, sí tenemos un nav, sería: body.dark nav {estilos}:
+    .Ahora, sí estamos dentro del selector nav, sustituimos el nav por &.
